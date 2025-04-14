@@ -24,7 +24,7 @@ Before running the application, make sure you have the following installed:
 ```bash
 git clone https://github.com/JairoJeffersont/easy_framework.git api_folder
 cd api_folder
-````
+```
 
 ### 2. Install dependencies:
 
@@ -32,20 +32,20 @@ Run the following command to install required PHP libraries using Composer:
 
 ```bash
 composer install
-````
+```
 
 ### 3. Set up environment variables:
 
 Edit the .env file to set up your environment variables, including database connection settings:
 
-````
+```
 DB_DRIVER=mysql
 DB_HOST=127.0.0.1
 DB_NAME=my_database
 DB_USER=root
 DB_PASS=password
 DB_CHARSET=utf8mb4
-````
+```
 
 ### 4. Deploy:
 
@@ -78,4 +78,3 @@ $router->post('/users', 'App\Controllers\UserController@store');
 ### License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
-

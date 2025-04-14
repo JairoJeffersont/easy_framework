@@ -48,6 +48,7 @@ class UserController {
         //VALIDATE FIELDS WITH MODEL
         if (Request::validateFields($required, $input, $this->userModel->columns)) {
             try {
+                //FIND A SPECIFIC USER BY EMAIL (or any column in model)
                 $users = $this->userModel->find('email', $input['email']);
                 if (!empty($users)) {
                     return Response::error('Email already exist.', 409, [], 'duplicated');
