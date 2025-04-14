@@ -16,8 +16,7 @@ class UserController {
         $this->userModel = new UserModel();
     }
 
-
-    //GET EXAMPLE
+    //GET ALL USERS EXAMPLE
     public function list() {
         try {
             $users = $this->userModel->findAll();
@@ -26,6 +25,20 @@ class UserController {
             return Response::error();
         }
     }
+
+    //FIND A SPECIFIC USER BY ID EXAMPLE
+    public function findById($id) {
+        try {
+            $users = $this->userModel->find('id', $id);
+            if (empty($users)) {
+                return Response::error('User not found.', 404, [], 'not_found');
+            }
+            return Response::success('User found.', $users);
+        } catch (PDOException $e) {
+            return Response::error();
+        }
+    }
+
 
     //POST EXAMPLE
     public function store() {
