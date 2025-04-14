@@ -1,6 +1,6 @@
-# Simple PHP Routing Application
+# Simple PHP API Application
 
-This is a simple PHP application that demonstrates basic routing, handling HTTP requests, and organizing controllers for CRUD operations. The application uses **Dotenv** for environment variable management, **PDO** for database interactions, and a custom router to handle different HTTP methods and routes.
+This is a simple PHP framework for APIs that demonstrates basic routing, handling HTTP requests, and organizing controllers for CRUD operations. The framework uses Dotenv for environment variable management, PDO for database interactions, and a custom router to handle different HTTP methods and routes.
 
 ## Features
 
