@@ -11,7 +11,7 @@ $router = new Router();
 
 // Register a GET route for '/users' to fetch all users.
 // The route is associated with the 'index' method in the UserController class.
-$router->get('/users', 'App\Controllers\UserController@index');
+$router->get('/users', 'App\Controllers\UserController@list');
 
 // Register a POST route for '/users' to create a new user.
 // The route is associated with the 'store' method in the UserController class.

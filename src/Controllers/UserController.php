@@ -4,18 +4,27 @@ namespace App\Controllers;
 
 use App\Core\Request;
 use App\Core\Response;
+use App\Models\UserModel;
+use PDOException;
 
 //EXAMPLE CONTROLLER
 class UserController {
 
+    protected UserModel $userModel;
+
+    public function __construct() {
+        $this->userModel = new UserModel();
+    }
+
+
     //GET EXAMPLE
-    public function index() {
-        //USER DATA EXAMPLE
-        $data = [
-            'name' => 'John Smith',
-            'age' => 19
-        ];
-        return Response::success('List of users', $data);
+    public function list() {
+        try {
+            $users = $this->userModel->findAll();
+            return Response::success('List of users', $users);
+        } catch (PDOException $e) {
+            return Response::error();
+        }
     }
 
     //POST EXAMPLE

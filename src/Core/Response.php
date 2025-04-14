@@ -73,7 +73,7 @@ class Response {
      * @param string $status The status of the response (default is 'error').
      * @return void
      */
-    public static function error(string $message = '', int $statusCode = 400, array $dados = [], string $status = 'error'): void {
+    public static function error(string $message = 'This server encountered an internal error.', int $statusCode = 500, array $dados = [], string $status = 'internal_server_error'): void {
         self::json($statusCode, $message, $dados, $status);
     }
 }
