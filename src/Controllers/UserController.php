@@ -39,7 +39,6 @@ class UserController {
         }
     }
 
-
     //POST EXAMPLE
     public function store() {
         $required = ['name', 'email', 'password'];
