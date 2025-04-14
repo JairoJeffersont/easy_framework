@@ -10,6 +10,7 @@ class UserController {
 
     //GET EXAMPLE
     public function index() {
+        //USER DATA EXAMPLE
         $data = [
             'name' => 'John Smith',
             'age' => 19

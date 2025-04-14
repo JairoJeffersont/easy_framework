@@ -5,6 +5,7 @@ namespace App\Core;
 use App\Core\Response;
 
 
+
 class Router {
     protected array $routes = [];
 
@@ -38,19 +39,22 @@ class Router {
             if (preg_match($route['pattern'], $uri, $matches)) {
                 array_shift($matches); // remove o match completo
 
-                [$class, $method] = explode('@', $route['action']);
+                [$class, $methodName] = explode('@', $route['action']);
 
-                if (!class_exists($class) || !method_exists($class, $method)) {
-                    http_response_code(500);
-                    echo json_encode(['error' => 'Controller or method not found']);
+                if (!class_exists($class) || !method_exists($class, $methodName)) {
+                    return Response::error('Route not found.', 404, [], 'not_found');
                     return;
                 }
 
-                echo call_user_func_array([new $class, $method], array_merge([$request], $matches));
+                $controller = new $class();
+                $response = $controller->$methodName(...$matches);
+
+                echo is_array($response) ? json_encode($response) : $response;
                 return;
             }
         }
 
-        return Response::error('Route not found', 404);
+        return Response::error('Route not found.', 404, [], 'not_found');
+
     }
 }

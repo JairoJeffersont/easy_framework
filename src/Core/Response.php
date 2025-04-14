@@ -23,11 +23,11 @@ class Response {
         exit;
     }
 
-    public static function success(string $message = '', array $dados = []): void {
-        self::json(200, $message, $dados, 'success');
+    public static function success(string $message = '', array $dados = [], string $status = 'success'): void {
+        self::json(200, $message, $dados, $status);
     }
 
-    public static function error(string $message = '', int $statusCode = 400, array $dados = []): void {
-        self::json($statusCode, $message, $dados, 'error');
+    public static function error(string $message = '', int $statusCode = 400, array $dados = [], string $status = 'error'): void {
+        self::json($statusCode, $message, $dados, $status);
     }
 }
