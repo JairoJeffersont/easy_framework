@@ -48,6 +48,10 @@ class UserController {
         //VALIDATE FIELDS WITH MODEL
         if (Request::validateFields($required, $input, $this->userModel->columns)) {
             try {
+                $users = $this->userModel->find('email', $input['email']);
+                if (!empty($users)) {
+                    return Response::error('Email already exist.', 409, [], 'duplicated');
+                }
                 $this->userModel->create($input);
                 return Response::success('User created.', $input);
             } catch (PDOException $e) {
