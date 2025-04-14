@@ -57,6 +57,12 @@ CREATE DATABASE my_database;
 
 ### 5. Start the development server:
 
+You have two options to run the server:
+
+#### Option 1: Using PHP's Built-in Development Server
+
+If you prefer not to configure a full web server like Apache or Nginx, you can use PHP's built-in development server with the following command:
+
 ```bash
 php -S localhost:8000 -t public
 ```
