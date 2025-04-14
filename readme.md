@@ -47,15 +47,7 @@ DB_PASS=password
 DB_CHARSET=utf8mb4
 ````
 
-### 4. Create the database:
-
-Ensure your MySQL server is running and create the database specified in your .env file.
-
-```bash
-CREATE DATABASE my_database;
-````
-
-### 5. Deploy:
+### 4. Deploy:
 
 You have two options to deploy this aplication:
 
