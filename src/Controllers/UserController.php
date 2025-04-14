@@ -36,7 +36,12 @@ class UserController {
         $input = Request::input();
 
         if (Request::validateFields($required, $input)) {
-            return Response::success('User created.', $input);
+            try {
+                $this->userModel->create($input);
+                return Response::success('User created.', $input);
+            } catch (PDOException $e) {
+                return Response::error();
+            }
         }
     }
 }
