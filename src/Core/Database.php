@@ -43,7 +43,7 @@ class Database {
                 self::$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             } catch (PDOException $e) {
                 // If connection fails, return a formatted error response
-                Response::error('Error connecting to the database', 500, [], 'internal_server_error');
+                Response::error(500, [], 'internal_server_error');
             }
         }
 

@@ -20,7 +20,7 @@ class UserController {
     public function list() {
         try {
             $users = $this->userModel->findAll();
-            return Response::success('List of users', $users);
+            return Response::success($users);
         } catch (PDOException $e) {
             return Response::error();
         }
@@ -31,9 +31,9 @@ class UserController {
         try {
             $users = $this->userModel->find('id', $id);
             if (empty($users)) {
-                return Response::error('User not found.', 404, [], 'not_found');
+                return Response::error(404, [], 'not_found');
             }
-            return Response::success('User found.', $users);
+            return Response::success($users);
         } catch (PDOException $e) {
             return Response::error();
         }
@@ -51,10 +51,10 @@ class UserController {
                 //FIND A SPECIFIC USER BY EMAIL (or any column in model)
                 $users = $this->userModel->find('email', $input['email']);
                 if (!empty($users)) {
-                    return Response::error('Email already exist.', 409, [], 'duplicated');
+                    return Response::error(409, [], 'duplicated');
                 }
                 $this->userModel->create($input);
-                return Response::success('User created.', $input);
+                return Response::success($input);
             } catch (PDOException $e) {
                 return Response::error();
             }

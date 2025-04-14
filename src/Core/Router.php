@@ -113,7 +113,7 @@ class Router {
 
                 // Check if the controller class and method exist
                 if (!class_exists($class) || !method_exists($class, $methodName)) {
-                    return Response::error('Route not found.', 404, [], 'not_found');
+                    return Response::error(404, [], 'not_found');
                 }
 
                 // Instantiate the controller and call the method with the matched parameters
@@ -127,6 +127,6 @@ class Router {
         }
 
         // Return an error if no matching route was found
-        return Response::error('Route not found.', 404, [], 'not_found');
+        return Response::error(405, [], 'method_not_allowed');
     }
 }

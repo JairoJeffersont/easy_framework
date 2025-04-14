@@ -24,7 +24,6 @@ class Response {
      */
     public static function json(
         int $statusCode = 200,
-        string $message = '',
         array $dados = [],
         string $status = 'success'
     ): void {
@@ -38,7 +37,6 @@ class Response {
         echo json_encode([
             'status_code' => $statusCode,
             'status' => $status,
-            'message' => $message,
             'data' => $dados
         ]);
 
@@ -57,8 +55,8 @@ class Response {
      * @param string $status The status of the response (default is 'success').
      * @return void
      */
-    public static function success(string $message = '', array $dados = [], string $status = 'success'): void {
-        self::json(200, $message, $dados, $status);
+    public static function success(array $data = [], string $status = 'success'): void {
+        self::json(200, $data, $status);
     }
 
     /**
@@ -73,7 +71,7 @@ class Response {
      * @param string $status The status of the response (default is 'error').
      * @return void
      */
-    public static function error(string $message = 'This server encountered an internal error.', int $statusCode = 500, array $dados = [], string $status = 'internal_server_error'): void {
-        self::json($statusCode, $message, $dados, $status);
+    public static function error(int $statusCode = 500, array $data = [], string $status = 'internal_server_error'): void {
+        self::json($statusCode, $data, $status);
     }
 }
