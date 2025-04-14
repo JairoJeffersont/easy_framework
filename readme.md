@@ -61,17 +61,19 @@ CREATE DATABASE my_database;
 php -S localhost:8000 -t public
 ```
 
-How It Works
-Routing: The application uses a custom Router class to handle different HTTP methods (GET, POST, PUT, DELETE). Each route is mapped to a controller action. For example, the route GET /users maps to the index method in the UserController.
+### Example Routes
 
-Controller: The controllers contain the business logic for handling requests. For instance, the UserController contains methods like index (to list users) and store (to create a new user).
+Here are some example routes defined in the application:
 
-Request Handling: The Request class captures incoming HTTP requests and retrieves important details like URI, HTTP method, and input data.
+```
+// Fetch all users (GET request)
+$router->get('/users', 'App\Controllers\UserController@index');
 
-Response: The Response class formats and sends JSON responses, including success and error messages with appropriate HTTP status codes.
+// Create a new user (POST request)
+$router->post('/users', 'App\Controllers\UserController@store');
+```
 
+### License
 
-
-
-
+This project is licensed under the MIT License - see the LICENSE file for details.
 
