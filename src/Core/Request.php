@@ -22,7 +22,7 @@ class Request {
         $data = json_decode($rawInput, true);
 
         if (json_last_error() !== JSON_ERROR_NONE) {
-            \App\Core\Response::error('JSON inválido: ' . json_last_error_msg(), 400);
+            \App\Core\Response::error('Invalid JSON: ' . json_last_error_msg(), 400, [], 'bad_request');
         }
 
         $clean = [];
@@ -31,5 +31,16 @@ class Request {
         }
 
         return $key ? $clean[$key] ?? null : $clean;
+    }
+
+    public static function validateFields(array $requiredFields, array $inputFields): bool {
+
+        foreach ($requiredFields as $field) {
+            if (!array_key_exists($field, $inputFields)) {
+                \App\Core\Response::error("Required field '{$field}' was not sent.", 400, [], 'bad_request');
+            }
+        }
+
+        return true;
     }
 }

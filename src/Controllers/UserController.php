@@ -20,7 +20,14 @@ class UserController {
 
     //POST EXAMPLE
     public function store() {
-        $data = Request::input();
-        return Response::success('User created.', $data);
+
+        //REQUIRED FIELDS EXAMPLE
+        $required = ['name', 'email', 'password'];
+
+        $input = Request::input();
+
+        if (Request::validateFields($required, $input)) {
+            return Response::success('User created.', $input);
+        }
     }
 }
