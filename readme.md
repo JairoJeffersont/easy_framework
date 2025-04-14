@@ -24,3 +24,54 @@ Before running the application, make sure you have the following installed:
 ```bash
 git clone https://github.com/your-username/simple-php-routing-app.git
 cd simple-php-routing-app
+````
+
+### 2. Install dependencies:
+
+Run the following command to install required PHP libraries using Composer:
+
+```bash
+composer install
+````
+
+### 3. Set up environment variables:
+
+Edit the .env file to set up your environment variables, including database connection settings:
+
+````
+DB_DRIVER=mysql
+DB_HOST=127.0.0.1
+DB_NAME=my_database
+DB_USER=root
+DB_PASS=password
+DB_CHARSET=utf8mb4
+````
+
+### 4. Create the database:
+
+Ensure your MySQL server is running and create the database specified in your .env file.
+
+```bash
+CREATE DATABASE my_database;
+````
+
+### 5. Start the development server:
+
+```bash
+php -S localhost:8000 -t public
+```
+
+How It Works
+Routing: The application uses a custom Router class to handle different HTTP methods (GET, POST, PUT, DELETE). Each route is mapped to a controller action. For example, the route GET /users maps to the index method in the UserController.
+
+Controller: The controllers contain the business logic for handling requests. For instance, the UserController contains methods like index (to list users) and store (to create a new user).
+
+Request Handling: The Request class captures incoming HTTP requests and retrieves important details like URI, HTTP method, and input data.
+
+Response: The Response class formats and sends JSON responses, including success and error messages with appropriate HTTP status codes.
+
+
+
+
+
+
