@@ -17,7 +17,7 @@ class Response {
             'status_code' => $statusCode,
             'status' => $status,
             'message' => $message,
-            'dados' => $dados
+            'data' => $dados
         ]);
 
         exit;
