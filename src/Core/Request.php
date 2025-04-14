@@ -22,7 +22,7 @@ class Request {
         $data = json_decode($rawInput, true);
 
         if (json_last_error() !== JSON_ERROR_NONE) {
-            \App\Core\Response::error('Invalid JSON: ' . json_last_error_msg(), 400, [], 'bad_request');
+            \App\Core\Response::error(400, [], 'invalid_json');
         }
 
         $clean = [];
@@ -37,13 +37,13 @@ class Request {
 
         foreach ($requiredFields as $field) {
             if (!array_key_exists($field, $inputFields)) {
-                \App\Core\Response::error("Required field '{$field}' was not sent.", 400, [], 'bad_request');
+                \App\Core\Response::error(400, [], 'bad_request');
             }
         }
 
         foreach ($inputFields as $field => $value) {
             if (!array_key_exists($field, $modelColumns)) {
-                \App\Core\Response::error("Field '{$field}' not permitted.", 400, [], 'bad_request');
+                \App\Core\Response::error(400, [], 'bad_request');
             }
         }
 
