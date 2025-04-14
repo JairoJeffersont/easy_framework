@@ -33,6 +33,7 @@ class UserController {
 
         $input = Request::input();
 
+        //VALIDATE FIELDS WITH MODEL
         if (Request::validateFields($required, $input, $this->userModel->columns)) {
             try {
                 $this->userModel->create($input);
