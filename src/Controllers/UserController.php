@@ -29,13 +29,11 @@ class UserController {
 
     //POST EXAMPLE
     public function store() {
-
-        //REQUIRED FIELDS EXAMPLE
         $required = ['name', 'email', 'password'];
 
         $input = Request::input();
 
-        if (Request::validateFields($required, $input)) {
+        if (Request::validateFields($required, $input, $this->userModel->columns)) {
             try {
                 $this->userModel->create($input);
                 return Response::success('User created.', $input);
