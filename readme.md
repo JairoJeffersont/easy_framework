@@ -67,6 +67,10 @@ If you prefer not to configure a full web server like Apache or Nginx, you can u
 php -S localhost:8000 -t public
 ```
 
+#### Option 2: Using Apache or Ngix server
+
+If you prefer to use a server like Apache or Nginx, configure the DocumentRoot to point to the public folder using a Virtual Host (vhost).
+
 ### Example Routes
 
 Here are some example routes defined in the application:
