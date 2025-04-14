@@ -22,8 +22,8 @@ Before running the application, make sure you have the following installed:
 ### 1. Clone the repository:
 
 ```bash
-git clone https://github.com/your-username/simple-php-routing-app.git
-cd simple-php-routing-app
+git clone https://github.com/JairoJeffersont/easy_framework.git api_folder
+cd api_folder
 ````
 
 ### 2. Install dependencies:
