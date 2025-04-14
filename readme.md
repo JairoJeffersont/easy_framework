@@ -55,9 +55,9 @@ Ensure your MySQL server is running and create the database specified in your .e
 CREATE DATABASE my_database;
 ````
 
-### 5. Start the development server:
+### 5. Deploy:
 
-You have two options to run the server:
+You have two options to deploy this aplication:
 
 #### Option 1: Using PHP's Built-in Development Server
 
