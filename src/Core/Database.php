@@ -24,7 +24,6 @@ class Database {
      * Otherwise, it creates a new connection using environment variables.
      *
      * Required environment variables:
-     * - DB_DRIVER (e.g., 'mysql')
      * - DB_HOST (e.g., 'localhost')
      * - DB_NAME (e.g., 'my_database')
      * - DB_CHARSET (e.g., 'utf8mb4')
@@ -35,7 +34,7 @@ class Database {
      */
     public static function connect(): PDO {
         if (self::$pdo === null) {
-            $dsn = $_ENV['DB_DRIVER'] . ":host=" . $_ENV['DB_HOST'] .
+            $dsn = "mysql:host=" . $_ENV['DB_HOST'] .
                 ";dbname=" . $_ENV['DB_NAME'] .
                 ";charset=" . $_ENV['DB_CHARSET'];
 

@@ -39,7 +39,6 @@ composer install
 Edit the .env file to set up your environment variables, including database connection settings:
 
 ```
-DB_DRIVER=mysql
 DB_HOST=127.0.0.1
 DB_NAME=my_database
 DB_USER=root
