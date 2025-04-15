@@ -27,20 +27,30 @@ class Response {
         array $dados = [],
         string $status = 'success'
     ): void {
-        // Set the HTTP response code
+        // Função recursiva para decodificar valores do array
+        $decodeHtmlSpecialChars = function ($item) use (&$decodeHtmlSpecialChars) {
+            if (is_array($item)) {
+                return array_map($decodeHtmlSpecialChars, $item);
+            }
+            return is_string($item) ? htmlspecialchars_decode($item) : $item;
+        };
+
+        $dados = $decodeHtmlSpecialChars($dados);
+
+        // Define o código de resposta HTTP
         http_response_code($statusCode);
 
-        // Set the content type to JSON
+        // Define o tipo de conteúdo como JSON
         header('Content-Type: application/json');
 
-        // Encode the response data as JSON and send it
+        // Codifica os dados como JSON e envia a resposta
         echo json_encode([
             'status_code' => $statusCode,
             'status' => $status,
             'data' => $dados
         ]);
 
-        // Stop the execution of the script
+        // Encerra a execução do script
         exit;
     }
 

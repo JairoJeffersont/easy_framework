@@ -145,10 +145,13 @@ abstract class BaseModel {
      * @param mixed $value The value to search for.
      * @return array|null The found record as an associative array, or null if not found.
      */
-    public function find(string $column, mixed $value): ?array {
+     public function find(string $column, mixed $value): ?array {
         $stmt = $this->db->prepare("SELECT * FROM {$this->table} WHERE {$column} = :value");
         $stmt->execute(['value' => $value]);
-        return $stmt->fetch(PDO::FETCH_ASSOC) ?: null;
+        
+        // Verifica o número de resultados e escolhe entre fetch ou fetchAll
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return count($results) === 1 ? $results[0] : ($results ?: null);
     }
 
     /**
